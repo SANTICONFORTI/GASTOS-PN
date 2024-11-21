@@ -28,58 +28,55 @@
         </div>
         
         <!-- Pantalla de patrimonio neto -->
-<div id="patrimonioScreen" class="container" style="display:none;">
-    <h1>Calculá tu Patrimonio Neto</h1>
-    <div class="form-group">
-        <label for="assets">Lo que tenés:</label>
-        <input type="text" id="assets" placeholder="Monto de lo que tenés" oninput="formatCurrency(this)">
-    </div>
-    <div class="form-group">
-        <label for="debts">Lo que debés:</label>
-        <input type="text" id="debts" placeholder="Monto de lo que debés" oninput="formatCurrency(this)">
-    </div>
-    <div class="form-group">
-        <label for="owed">Lo que te deben:</label>
-        <input type="text" id="owed" placeholder="Monto de lo que te deben" oninput="formatCurrency(this)">
-    </div>
-    <button onclick="calcularPatrimonio()">Calcular Patrimonio Neto</button>
-    <p id="patrimonioResult"></p>
-    <button onclick="backToHome()">Volver</button>
-</div>
+        <div id="patrimonioScreen" class="container" style="display:none;">
+            <h1>Calculá tu Patrimonio Neto</h1>
+            <div class="form-group">
+                <label for="assets">Lo que tenés:</label>
+                <!-- Cambio aquí a tipo 'tel' y agrego 'inputmode="numeric"' -->
+                <input type="tel" id="assets" placeholder="Monto de lo que tenés" oninput="formatCurrency(this)" inputmode="numeric">
+            </div>
+            <div class="form-group">
+                <label for="debts">Lo que debés:</label>
+                <!-- Cambio aquí a tipo 'tel' y agrego 'inputmode="numeric"' -->
+                <input type="tel" id="debts" placeholder="Monto de lo que debés" oninput="formatCurrency(this)" inputmode="numeric">
+            </div>
+            <div class="form-group">
+                <label for="owed">Lo que te deben:</label>
+                <!-- Cambio aquí a tipo 'tel' y agrego 'inputmode="numeric"' -->
+                <input type="tel" id="owed" placeholder="Monto de lo que te deben" oninput="formatCurrency(this)" inputmode="numeric">
+            </div>
+            <button onclick="calcularPatrimonio()">Calcular Patrimonio Neto</button>
+            <p id="patrimonioResult"></p>
+            <button onclick="backToHome()">Volver</button>
+        </div>
 
-<!-- Pantalla de cálculo de gastos -->
-<div id="gastosScreen" class="container" style="display:none;">
-    <h1>Calculá tus Gastos por Día</h1>
-    <div class="form-group">
-        <label for="totalMoney">¿Cuánto dinero tenés?</label>
-        <input type="text" id="totalMoney" placeholder="Monto de dinero" oninput="formatCurrency(this)">
-    </div>
-    <div class="form-group">
-        <label for="calculationType">Seleccioná el tipo de cálculo:</label>
-        <select id="calculationType" onchange="toggleInputs()">
-            <option value="currentMonth">Gastos hasta fin de mes</option>
-            <option value="dateRange">Gastos entre fechas</option>
-        </select>
-    </div>
-    <div id="dateRangeInputs" style="display:none;">
-        <label for="startDate">Fecha de inicio:</label>
-        <input type="date" id="startDate">
-        <label for="endDate">Fecha de fin:</label>
-        <input type="date" id="endDate">
-    </div>
-    <button onclick="calcularGastos()">Calcular Gastos</button>
-    <p id="gastosResult"></p>
-    <button onclick="backToHome()">Volver</button>
-    </div>
+        <!-- Pantalla de cálculo de gastos -->
+        <div id="gastosScreen" class="container" style="display:none;">
+            <h1>Calculá tus Gastos por Día</h1>
+            <div class="form-group">
+                <label for="totalMoney">¿Cuánto dinero tenés?</label>
+                <!-- Cambio aquí a tipo 'tel' y agrego 'inputmode="numeric"' -->
+                <input type="tel" id="totalMoney" placeholder="Monto de dinero" oninput="formatCurrency(this)" inputmode="numeric">
+            </div>
+            <div class="form-group">
+                <label for="calculationType">Seleccioná el tipo de cálculo:</label>
+                <select id="calculationType" onchange="toggleInputs()">
+                    <option value="currentMonth">Gastos hasta fin de mes</option>
+                    <option value="dateRange">Gastos entre fechas</option>
+                </select>
+            </div>
+            <div id="dateRangeInputs" style="display:none;">
+                <label for="startDate">Fecha de inicio:</label>
+                <input type="date" id="startDate">
+                <label for="endDate">Fecha de fin:</label>
+                <input type="date" id="endDate">
+            </div>
+            <button onclick="calcularGastos()">Calcular Gastos</button>
+            <p id="gastosResult"></p>
+            <button onclick="backToHome()">Volver</button>
+        </div>
 
-        
         <script src="main.js"></script>
     </body>
     
     </html>
-    
-
-    <script src="main.js"></script>
-    </body>
-
-</html>
