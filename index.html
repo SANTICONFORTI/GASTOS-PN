@@ -3,83 +3,82 @@
     Este trabajo está disponible bajo una licencia CC BY-NC 4.0
     Para más detalles, visita: https://creativecommons.org/licenses/by-nc/4.0/ -->
     
-<!DOCTYPE html>
-<html lang="es">
-       
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Financiera</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#007aff">
-    <link rel="icon" href="assets/images/calculadora.png" type="image/png">
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
-
-
-</head>
-
-<body>
-
-    <!-- Pantalla de inicio -->
-    <div id="homeScreen" class="container">
-        <h1>Bienvenido</h1>
-        <h2>Seleccioná lo que queres calcular:</h2>
-        <button id="patrimonioBtn" onclick="showPatrimonio()">Calcular Patrimonio Neto</button>
-        <button id="gastosBtn" onclick="showGastos()">Calcular Gastos por Día</button>
-    </div>
+    <!DOCTYPE html>
+    <html lang="es">
+           
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora Financiera</title>
+        <link rel="manifest" href="manifest.json">
+        <meta name="theme-color" content="#007aff">
+        <link rel="icon" href="assets/images/calculadora.png" type="image/png">
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js" defer></script>
+    </head>
     
-    <!-- Pantalla de patrimonio neto -->
-    <div id="patrimonioScreen" class="container" style="display:none;">
-        <h1>Calculá tu Patrimonio Neto</h1>
-        <div class="form-group">
-            <label for="assets">Lo que tenés:</label>
-            <input type="number" id="assets" placeholder="Monto de lo que tenés">
-        </div>
-        <div class="form-group">
-            <label for="debts">Lo que debés:</label>
-            <input type="number" id="debts" placeholder="Monto de lo que debés">
-        </div>
-        <div class="form-group">
-            <label for="owed">Lo que te deben:</label>
-            <input type="number" id="owed" placeholder="Monto de lo que te deben">
-        </div>
-        <button onclick="calcularPatrimonio()">Calcular Patrimonio Neto</button>
-        <p id="patrimonioResult"></p>
-        <button onclick="backToHome()">Volver</button>
-    </div>
+    <body>
     
-    <!-- Pantalla de cálculo de gastos -->
-    <div id="gastosScreen" class="container" style="display:none;">
-        <h1>Calculá tus Gastos por Día</h1>
-        <div class="form-group">
-            <label for="totalMoney">¿Cuánto dinero tenés?</label>
-            <input type="number" id="totalMoney" placeholder="Monto de dinero">
+        <!-- Pantalla de inicio -->
+        <div id="homeScreen" class="container">
+            <h1>Bienvenido</h1>
+            <h2>Seleccioná lo que queres calcular:</h2>
+            <button id="patrimonioBtn" onclick="showPatrimonio()">Calcular Patrimonio Neto</button>
+            <button id="gastosBtn" onclick="showGastos()">Calcular Gastos por Día</button>
         </div>
-        <div class="form-group">
-            <label for="calculationType">Seleccioná el tipo de cálculo:</label>
-            <select id="calculationType" onchange="toggleInputs()">
-                <option value="currentMonth">Gastos hasta fin de mes</option>
-                <option value="dateRange">Gastos entre fechas</option>
-            </select>
-        </div>
-        <div id="dateRangeInputs" style="display:none;">
-            <label for="startDate">Fecha de inicio:</label>
-            <input type="date" id="startDate">
-            <label for="endDate">Fecha de fin:</label>
-            <input type="date" id="endDate">
-        </div>
-        <button onclick="calcularGastos()">Calcular Gastos</button>
-        <p id="gastosResult"></p>
-        <button onclick="backToHome()">Volver</button>
+        
+        <!-- Pantalla de patrimonio neto -->
+<div id="patrimonioScreen" class="container" style="display:none;">
+    <h1>Calculá tu Patrimonio Neto</h1>
+    <div class="form-group">
+        <label for="assets">Lo que tenés:</label>
+        <input type="text" id="assets" placeholder="Monto de lo que tenés" oninput="formatCurrency(this)">
     </div>
-    
-    <script src="main.js"></script>
+    <div class="form-group">
+        <label for="debts">Lo que debés:</label>
+        <input type="text" id="debts" placeholder="Monto de lo que debés" oninput="formatCurrency(this)">
+    </div>
+    <div class="form-group">
+        <label for="owed">Lo que te deben:</label>
+        <input type="text" id="owed" placeholder="Monto de lo que te deben" oninput="formatCurrency(this)">
+    </div>
+    <button onclick="calcularPatrimonio()">Calcular Patrimonio Neto</button>
+    <p id="patrimonioResult"></p>
+    <button onclick="backToHome()">Volver</button>
+</div>
+
+<!-- Pantalla de cálculo de gastos -->
+<div id="gastosScreen" class="container" style="display:none;">
+    <h1>Calculá tus Gastos por Día</h1>
+    <div class="form-group">
+        <label for="totalMoney">¿Cuánto dinero tenés?</label>
+        <input type="text" id="totalMoney" placeholder="Monto de dinero" oninput="formatCurrency(this)">
+    </div>
+    <div class="form-group">
+        <label for="calculationType">Seleccioná el tipo de cálculo:</label>
+        <select id="calculationType" onchange="toggleInputs()">
+            <option value="currentMonth">Gastos hasta fin de mes</option>
+            <option value="dateRange">Gastos entre fechas</option>
+        </select>
+    </div>
+    <div id="dateRangeInputs" style="display:none;">
+        <label for="startDate">Fecha de inicio:</label>
+        <input type="date" id="startDate">
+        <label for="endDate">Fecha de fin:</label>
+        <input type="date" id="endDate">
+    </div>
+    <button onclick="calcularGastos()">Calcular Gastos</button>
+    <p id="gastosResult"></p>
+    <button onclick="backToHome()">Volver</button>
+    </div>
+
+        
+        <script src="main.js"></script>
     </body>
-
-</html>
-
     
+    </html>
+    
+
     <script src="main.js"></script>
     </body>
 
